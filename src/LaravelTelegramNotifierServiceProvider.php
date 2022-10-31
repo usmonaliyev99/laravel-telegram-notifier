@@ -3,8 +3,10 @@
 namespace Usmonaliyev\LaravelTelegramNotifier;
 
 use Illuminate\Support\ServiceProvider;
-use Usmonaliyev\LaravelTelegramNotifier\Telegram\Telegram;
 
+/**
+ * class LaravelTelegramNotifierServiceProvider
+ */
 class LaravelTelegramNotifierServiceProvider extends ServiceProvider
 {
     /**
@@ -30,9 +32,5 @@ class LaravelTelegramNotifierServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $BOT_TOKEN = config("laravel-telegram-notifier.token");
-        $errorLog = config("laravel-telegram-notifier.error_log");
-
-        $this->app->singleton(Telegram::class, fn () => new Telegram($BOT_TOKEN, $errorLog));
     }
 }

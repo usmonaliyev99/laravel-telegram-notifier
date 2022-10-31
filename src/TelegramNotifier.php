@@ -3,6 +3,7 @@
 namespace Usmonaliyev\LaravelTelegramNotifier;
 
 use Error;
+use Throwable;
 use Usmonaliyev\LaravelTelegramNotifier\Telegram\Telegram;
 use Usmonaliyev\LaravelTelegramNotifier\Utils\MessageSection;
 
@@ -28,9 +29,9 @@ class TelegramNotifier
     /**
      * Constructor of TelegramNotifier class
      */
-    public function __construct(Telegram $telegram)
+    public function __construct()
     {
-        $this->telegram = $telegram;
+        $this->telegram = new Telegram(config("laravel-telegram-notifier.token", null), config("laravel-telegram-notifier.error_log"));
 
         $this->chatIds = config("laravel-telegram-notifier.chat_ids", []);
         $this->messageOptions = config("laravel-telegram-notifier.message", []);
@@ -39,9 +40,9 @@ class TelegramNotifier
     /**
      * This function send error message to chats or groups.
      *
-     * @param Error $error
+     * @param Throwable $error
      */
-    public function error(Error $error)
+    public function error(Throwable $error)
     {
         $messageTitle = config("laravel-telegram-notifier.message_title", "");
         if (
