@@ -1,0 +1,25 @@
+{
+    "name": "usmonaliyev/laravel-telegram-notifier",
+    "description": "This package send errors and messages to your telegram group or chat.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Usmonaliyev\\LaravelTelegramNotifier\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Temur5319436",
+            "email": "temur5319436@gmail.com"
+        }
+    ],
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Usmonaliyev\\LaravelTelegramNotifier\\LaravelTelegramNotifierServiceProvider"
+            ]
+        }
+    }
+}
