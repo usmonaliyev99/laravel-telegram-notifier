@@ -53,8 +53,8 @@ class TelegramNotifier
         }
 
         $message = [
-            "request" => [],
-            "error" => []
+            MessageSection::REQUEST => [],
+            MessageSection::ERROR => []
         ];
         if (isset($this->messageOptions[MessageSection::REQUEST])) {
             foreach ($this->messageOptions[MessageSection::REQUEST] as $key => $messageOption) {
