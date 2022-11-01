@@ -35,7 +35,7 @@ return [
      * Header of message.
      * I recommend text end with \n
      */
-    "message_title" => "App title\n",
+    "message_title" => env("APP_NAME", "laravel-telegram-notifier") . "\n",
 
     /**
      * Content of message.
