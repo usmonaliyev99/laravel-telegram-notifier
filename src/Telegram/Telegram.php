@@ -87,8 +87,6 @@ class Telegram
      */
     public function __construct($bot_token, $log_errors = true, array $proxy = [])
     {
-        if (!$bot_token) throw new Error("Token of bot is required!");
-
         $this->bot_token = $bot_token;
         $this->data = $this->getData();
         $this->log_errors = $log_errors;

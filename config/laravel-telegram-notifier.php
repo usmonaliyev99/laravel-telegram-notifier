@@ -7,6 +7,11 @@ use Usmonaliyev\LaravelTelegramNotifier\Utils\RequestMessageBuilder;
 return [
 
     /**
+     * When app_env is not equal local then bot send error to telegram.
+     */
+    "app_env" => env("APP_ENV", "local"),
+
+    /**
      * Token of bot is required.
      *
      * This package will read token of your bot in your .env file.
@@ -24,7 +29,7 @@ return [
      * Example: [7685948574, -46584763857]
      * Example: [env("CHAT_ONE_ID"), env("CHAT_TWO_ID")]
      */
-    "chat_ids" => [1911852587],
+    "chat_ids" => [env("CHAT_ID")],
 
     /**
      * Header of message.
