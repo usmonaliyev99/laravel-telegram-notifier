@@ -64,8 +64,8 @@ public function register()
 And add your bot token and receiver chat id to `.env` file.
 
 ```
-TELEGRAM_NOTIFIER_BOT_TOKEN=5038784210:AFFAGC-IPqJtqkKXI3SWWXHRFgde3DT-Xys
-CHAT_ID=1911856567
+TELEGRAM_NOTIFIER_BOT_TOKEN=
+CHAT_ID=
 TELEGRAM_NOTIFIER_ERROR_LOG=true
 ```
 
