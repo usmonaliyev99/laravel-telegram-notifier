@@ -44,6 +44,8 @@ class TelegramNotifier
      */
     public function error(Throwable $error)
     {
+        if (config("laravel-telegram-notifier.app_env", "local") != "production") return;
+
         $messageTitle = config("laravel-telegram-notifier.message_title", "");
         if (
             !isset($this->messageOptions[MessageSection::REQUEST])
