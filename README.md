@@ -3,6 +3,9 @@
 
 This package send bugs and messages to your telegram group or chat. 
 
+![Packagist Downloads](https://img.shields.io/packagist/dm/usmonaliyev/laravel-telegram-notifier)
+![Packagist Version](https://img.shields.io/packagist/v/usmonaliyev/laravel-telegram-notifier)
+![Packagist License](https://img.shields.io/packagist/l/usmonaliyev/laravel-telegram-notifier)
 
 ## Screenshots
 
