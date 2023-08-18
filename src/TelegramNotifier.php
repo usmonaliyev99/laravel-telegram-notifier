@@ -80,4 +80,25 @@ class TelegramNotifier
             sleep(1);
         }
     }
+
+    /**
+     * Send message to chat id
+     *
+     * @param int|string $chatId
+     * @param string $text
+     * @param array|null $replyMarkup
+     * @return void
+     */
+    public function sendMessage($chatId, $text, $replyMarkup = null): void
+    {
+        $message = [
+            'chat_id' => $chatId,
+            'text' => $text,
+        ];
+        if ($replyMarkup) {
+            $message['reply_markup'] = json_encode($replyMarkup);
+        }
+
+        $this->telegram->sendMessage($message);
+    }
 }
