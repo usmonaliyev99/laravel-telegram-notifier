@@ -42,7 +42,7 @@ class TelegramNotifier
      *
      * @param Throwable $error
      */
-    public function error(Throwable $error)
+    public function error(Throwable $error): void
     {
         if (config("laravel-telegram-notifier.app_env", "local") != "production") return;
 
@@ -76,8 +76,6 @@ class TelegramNotifier
                 "chat_id" => $chatId,
                 "text" => $messageTitle . str_replace("\\", "", json_encode($message, 128)),
             ]);
-
-            sleep(1);
         }
     }
 
@@ -89,7 +87,7 @@ class TelegramNotifier
      * @param array|null $replyMarkup
      * @return void
      */
-    public function sendMessage($chatId, $text, $replyMarkup = null): void
+    public function sendMessage(int|string $chatId, string $text, array $replyMarkup = null): void
     {
         $message = [
             'chat_id' => $chatId,
@@ -100,5 +98,38 @@ class TelegramNotifier
         }
 
         $this->telegram->sendMessage($message);
+    }
+
+    /**
+     * Send message to each chat id
+     *
+     * @param string $text
+     * @param null $replyMarkup
+     * @param bool $title
+     * @return void
+     */
+    public function notify(string $text, $replyMarkup = null, bool $title = true): void
+    {
+        if ($title) {
+            $text = config("laravel-telegram-notifier.message_title", "") . $text;
+        }
+
+        $content = [
+            'chat_id' => null,
+            'text' => $text,
+        ];
+
+        if ($replyMarkup) {
+            $content['reply_markup'] = json_encode($replyMarkup);
+        }
+
+        array_map(
+            function ($chatId) use (&$content) {
+                $content['chat_id'] = $chatId;
+
+                $this->telegram->sendMessage($content);
+            },
+            $this->chatIds
+        );
     }
 }
