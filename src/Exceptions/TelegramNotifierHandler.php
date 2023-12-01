@@ -10,6 +10,7 @@ use Usmonaliyev\LaravelTelegramNotifier\TelegramNotifier;
 class TelegramNotifierHandler extends ExceptionHandler
 {
     private TelegramNotifier $telegramNotifier;
+
     public function __construct(Container $container, TelegramNotifier $telegramNotifier)
     {
         parent::__construct($container);
