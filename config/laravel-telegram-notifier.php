@@ -21,7 +21,7 @@ return [
     /**
      * Write a log when there is an error when sending a message to Telegram
      */
-    "error_log" => env("TELEGRAM_NOTIFIER_ERROR_LOG", true),
+    "error_log" => env("TELEGRAM_NOTIFIER_ERROR_LOG", false),
 
     /**
      * Receiver chat ids of telegram profile and group
