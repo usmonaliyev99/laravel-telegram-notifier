@@ -11,4 +11,6 @@ class RequestMessageBuilder
     const USER_AGENT = "userAgent";
 
     const ALL = "all";
+
+    const METHOD = "method";
 }

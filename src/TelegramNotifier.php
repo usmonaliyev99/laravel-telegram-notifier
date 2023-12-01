@@ -55,13 +55,15 @@ class TelegramNotifier
             throw new Error("In your config message_title and request and error options should not be empty at the same time !");
         }
 
+        $request = request();
+
         $message = [
             MessageSection::REQUEST => [],
             MessageSection::ERROR => []
         ];
         if (isset($this->messageOptions[MessageSection::REQUEST])) {
             foreach ($this->messageOptions[MessageSection::REQUEST] as $key => $messageOption) {
-                $message["request"][$key] = request()->{$messageOption}();
+                $message["request"][$key] = $request->{$messageOption}();
             }
         }
         if (isset($this->messageOptions[MessageSection::ERROR])) {

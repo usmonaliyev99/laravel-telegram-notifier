@@ -75,6 +75,11 @@ return [
              * Get the client IP address.
              */
             "ip" => RequestMessageBuilder::IP,
+
+            /**
+             * Get method of request
+             */
+            "method" => RequestMessageBuilder::METHOD,
         ],
 
         /**
