@@ -24,47 +24,7 @@ For control it, create config file
 php artisan vendor:publish --provider="Usmonaliyev\LaravelTelegramNotifier\LaravelTelegramNotifierServiceProvider"
 ```
 
-For send errors to your telegram groups or accounts
- you should inject `Usmonaliyev/LaravelTelegramNotifier/TelegramNotifier`
- class in `app/Exceptions/Handler.php` file.
-
-```php
-use Throwable;
-use Illuminate\Contracts\Container\Container;
-use Usmonaliyev\LaravelTelegramNotifier\TelegramNotifier;
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-
-class Handler extends ExceptionHandler
-{
-    private TelegramNotifier $telegramNotifier;
-
-    public function __construct(Container $container, TelegramNotifier $telegramNotifier)
-    {
-        parent::__construct($container);
-
-        $this->telegramNotifier = $telegramNotifier;
-    }
-```
-
-You can send bugs to telegram groups or chats
-via `$this->telegramNotifier->error($error);` function.
-You should change your `register` function of  `app/Exceptions/Handler.php` file.
-
-```php
-/**
-* Register the exception handling callbacks for the application.
-*
-* @return void
-*/
-public function register()
-{
-    $this->reportable(function (Throwable $e) {
-        $this->telegramNotifier->error($e);
-    });
-}
-```
-
-And add your bot token and receiver chat id to `.env` file.
+Add your bot token and receiver chat id to `.env` file.
 
 ```
 TELEGRAM_NOTIFIER_BOT_TOKEN=
