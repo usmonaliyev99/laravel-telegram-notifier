@@ -7,7 +7,7 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 use Usmonaliyev\LaravelTelegramNotifier\TelegramNotifier;
 
-class TelegramNotifierException extends ExceptionHandler
+class TelegramNotifierHandler extends ExceptionHandler
 {
     private TelegramNotifier $telegramNotifier;
     public function __construct(Container $container, TelegramNotifier $telegramNotifier)
