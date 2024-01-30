@@ -17,14 +17,14 @@ class TelegramNotifier
     /**
      * @var Telegram $telegram
      */
-    private Telegram $telegram;
+    protected Telegram $telegram;
 
     /**
      * @var array $chatIds
      */
-    private array $chatIds;
+    protected array $chatIds;
 
-    private array $messageOptions = [];
+    protected array $messageOptions = [];
 
     /**
      * Constructor of TelegramNotifier class
