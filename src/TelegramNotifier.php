@@ -87,9 +87,9 @@ class TelegramNotifier
      * @param int|string $chatId
      * @param string $text
      * @param array|null $replyMarkup
-     * @return void
+     * @return mixed
      */
-    public function sendMessage(int|string $chatId, string $text, array $replyMarkup = null): void
+    public function sendMessage(int|string $chatId, string $text, array $replyMarkup = null): mixed
     {
         $message = [
             'chat_id' => $chatId,
@@ -99,7 +99,7 @@ class TelegramNotifier
             $message['reply_markup'] = json_encode($replyMarkup);
         }
 
-        $this->telegram->sendMessage($message);
+        return $this->telegram->sendMessage($message);
     }
 
     /**
