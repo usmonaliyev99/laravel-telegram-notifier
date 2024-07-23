@@ -26,6 +26,8 @@ class TelegramNotifier
 
     protected array $messageOptions = [];
 
+    protected ?string $responsible;
+
     /**
      * Constructor of TelegramNotifier class
      */
@@ -35,6 +37,7 @@ class TelegramNotifier
 
         $this->chatIds = config("laravel-telegram-notifier.chat_ids", []);
         $this->messageOptions = config("laravel-telegram-notifier.message", []);
+        $this->responsible = config("laravel-telegram-notifier.responsible", null);
     }
 
     /**
@@ -58,6 +61,7 @@ class TelegramNotifier
         $request = request();
 
         $message = [
+            MessageSection::RESPONSIBLE => $this->responsible,
             MessageSection::REQUEST => [],
             MessageSection::ERROR => []
         ];

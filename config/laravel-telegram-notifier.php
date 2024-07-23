@@ -38,6 +38,14 @@ return [
     "message_title" => env("APP_NAME", "laravel-telegram-notifier") . "\n",
 
     /**
+     * Username of responsible telegram user
+     *
+     * It must start with @ symbol.
+     * @someone @usmonaliyev99
+     */
+    "responsible" => env("TELEGRAM_NOTIFIER_RESPONSIBLE", null),
+
+    /**
      * Content of message.
      */
     "message" => [
