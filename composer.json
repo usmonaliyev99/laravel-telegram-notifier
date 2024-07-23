@@ -1,6 +1,7 @@
 {
     "name": "usmonaliyev/laravel-telegram-notifier",
     "description": "This package send errors and messages to your telegram group or chat.",
+    "keywords": ["laravel", "telegram", "notifier", "error"],
     "type": "library",
     "license": "MIT",
     "autoload": {
@@ -14,7 +15,10 @@
             "email": "temur5319436@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "php": "^7.4|^8.1",
+        "illuminate/contracts": "^10.0|^11.0"
+    },
     "extra": {
         "laravel": {
             "providers": [
