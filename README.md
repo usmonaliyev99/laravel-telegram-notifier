@@ -17,7 +17,7 @@ This package send bugs and messages to your telegram group or chat.
 Install this project with composer
 
 ```bash
-  composer require usmonaliyev/laravel-telegram-notifier
+composer require usmonaliyev/laravel-telegram-notifier
 ```
 
 To control it, create config file
