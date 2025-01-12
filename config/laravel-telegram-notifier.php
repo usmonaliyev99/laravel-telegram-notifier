@@ -7,9 +7,9 @@ use Usmonaliyev\LaravelTelegramNotifier\Utils\RequestMessageBuilder;
 return [
 
     /**
-     * When app_env is not equal local then bot send error to telegram.
+     * This variable indicates whether the message should be sent or not
      */
-    "app_env" => env("APP_ENV", "local"),
+    "enabled" => env("TELEGRAM_NOTIFIER_ENABLED", true),
 
     /**
      * Token of bot is required.
@@ -56,7 +56,7 @@ return [
         MessageSection::REQUEST => [
 
             /**
-             * Get all of the input and files for the request.
+             * Get all the input and files for the request.
              */
             "body" => RequestMessageBuilder::ALL,
 
@@ -109,11 +109,6 @@ return [
              * Gets the file in which the exception was created
              */
             "file" => ErrorMessageBuilder::GET_FILE,
-
-            /**
-             * Gets the Exception code
-             */
-            "code" => ErrorMessageBuilder::GET_CODE,
 
             /**
              * Gets the line in which the exception was created
