@@ -3,6 +3,7 @@
 namespace Usmonaliyev\LaravelTelegramNotifier;
 
 use Error;
+use Exception;
 use Throwable;
 use Usmonaliyev\LaravelTelegramNotifier\Telegram\Telegram;
 use Usmonaliyev\LaravelTelegramNotifier\Utils\MessageSection;
@@ -43,11 +44,11 @@ class TelegramNotifier
     /**
      * This function send error message to chats or groups.
      *
-     * @param Throwable $error
+     * @throws Exception
      */
     public function error(Throwable $error): void
     {
-        if (config("laravel-telegram-notifier.app_env", "local") == "local") return;
+        if (! config('laravel-telegram-notifier.enabled')) return;
 
         $messageTitle = config("laravel-telegram-notifier.message_title", "");
         if (
@@ -55,7 +56,7 @@ class TelegramNotifier
             && !isset($this->messageOptions[MessageSection::ERROR])
             && $messageTitle == ""
         ) {
-            throw new Error("In your config message_title and request and error options should not be empty at the same time !");
+            throw new Exception("In your config message_title and request and error options should not be empty at the same time !");
         }
 
         $request = request();
