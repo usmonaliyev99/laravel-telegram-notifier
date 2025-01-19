@@ -87,7 +87,3 @@ php artisan notify:check
 
 In production mode you can load configurations from .env with `php artisan config:clear` command.
 
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
-
